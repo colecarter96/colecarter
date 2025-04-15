@@ -1,9 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const navLinks = [
+  { href: '/', label: 'ABOUT' },
+  { href: '/projects', label: 'PROJECTS' },
+  { href: '/contact', label: 'CONTACT' },
+  { href: '/blog', label: 'BLOG' },
+];
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -25,10 +35,20 @@ const Header = () => {
 
                         {/* Desktop navigation - hidden on mobile */}
                         <div className="hidden md:flex gap-8 font-['Playfair_Display'] font-medium text-lg tracking-wide">
-                            <a href="#" className="hover:text-yellow-950">ABOUT</a>
-                            <a href="#" className="hover:text-yellow-950">PROJECTS</a>
-                            <a href="#" className="hover:text-yellow-950">CONTACT</a>
-                            <a href="#" className="hover:text-yellow-950">BLOG</a>
+                          {navLinks.map(link => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className={
+                                `hover:text-yellow-950 transition-colors duration-150 ` +
+                                (pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
+                                  ? 'text-yellow-900 font-bold underline underline-offset-4'
+                                  : '')
+                              }
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
                         </div>
 
                         {/* Mobile menu button - right side */}
@@ -65,10 +85,21 @@ const Header = () => {
                     </button>
 
                     <div className="flex flex-col gap-6 font-['Playfair_Display'] font-medium text-lg tracking-wide">
-                        <a href="#" className="hover:text-yellow-950">ABOUT</a>
-                        <a href="#" className="hover:text-yellow-950">PROJECTS</a>
-                        <a href="#" className="hover:text-yellow-950">CONTACT</a>
-                        <a href="#" className="hover:text-yellow-950">BLOG</a>
+                      {navLinks.map(link => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={
+                            `hover:text-yellow-950 transition-colors duration-150 ` +
+                            (pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
+                              ? 'text-yellow-900 font-bold underline underline-offset-4'
+                              : '')
+                          }
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
                     </div>
                 </div>
             </div>
