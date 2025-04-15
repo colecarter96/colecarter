@@ -5,8 +5,8 @@ const HeroImage = () => {
         <div className="w-full max-w-7xl mx-auto px-8 py-16">
             <div className="relative w-full h-[500px] bg-gray-100">
                 <Image
-                    src="/images/SurfPhoto.jpg"
-                    alt="Hero image"
+                    src="https://i.postimg.cc/Z5BFndtZ/Surf-Photo.jpg"
+                    alt="Surfing photo"
                     fill
                     className="object-cover"
                     priority
