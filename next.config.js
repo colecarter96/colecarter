@@ -8,6 +8,7 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+    domains: ['i.postimg.cc', 'variety.com'],
   },
 }
 

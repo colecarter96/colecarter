@@ -4,7 +4,7 @@ import HeroImage from './components/HeroImage';
 export default function Home() {
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <HeroImage />
     </main>
   );
