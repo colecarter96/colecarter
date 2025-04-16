@@ -9,7 +9,7 @@ async function getBaseUrl() {
   return `${protocol}://${host}`;
 }
 
-async function getPosts() {
+async function getBlogPosts() {
   const baseUrl = await getBaseUrl();
   const res = await fetch(`${baseUrl}/api/blog`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to fetch blog posts');
@@ -20,14 +20,14 @@ export default async function BlogPage() {
   let posts = [];
   let error = null;
   try {
-    posts = await getPosts();
+    posts = await getBlogPosts();
   } catch (e: any) {
     error = e.message;
   }
 
   return (
     <main className="min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <section className="max-w-7xl mx-auto px-10 py-12">
         {error && <div className="text-red-600 mb-4">{error}</div>}
         {!error && posts.length === 0 && <div className="text-gray-500">No blog posts found.</div>}

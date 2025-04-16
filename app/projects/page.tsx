@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <section className="max-w-7xl mx-auto px-10 py-12">
         {error && <div className="text-red-600 mb-4">{error}</div>}
         {!error && projects.length === 0 && <div className="text-gray-500">No projects found.</div>}
